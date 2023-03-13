@@ -18,7 +18,14 @@ function agregarVenta() {
 
 function actualizarTabla() {
   let tabla = document.getElementById("tabla-ventas");
-  tabla.innerHTML = "";
+  let filasExistentes = tabla.rows.length - 1;
+  // Se resta 1 para excluir la fila del total
+
+  for (let i = 0; i < filasExistentes; i++) {
+    tabla.deleteRow(1);
+    // Se elimina la segunda fila (índice 1) porque la primera fila
+    // corresponde a la cabecera de la tabla
+  }
 
   let totalVentas = 0;
 
@@ -34,12 +41,12 @@ function actualizarTabla() {
     fila.appendChild(cantidad);
 
     let precio = document.createElement("td");
-    precio.textContent = venta.precio.toFixed(2).toString().trimEnd('0').trimEnd('.');
+    precio.textContent = venta.precio.toFixed(2).toString().padStart(6, '0');
     fila.appendChild(precio);
 
     let total = document.createElement("td");
     let totalVenta = venta.cantidad * venta.precio;
-    total.textContent = totalVenta.toFixed(2).toString().trimEnd('0').trimEnd('.');
+    total.textContent = totalVenta.toFixed(2).toString().padStart(6, '0');
     fila.appendChild(total);
 
     totalVentas += totalVenta;
@@ -54,11 +61,12 @@ function actualizarTabla() {
   filaTotal.appendChild(tdTotal);
 
   let tdTotalVentas = document.createElement("td");
-  tdTotalVentas.textContent = totalVentas.toFixed(2).toString().trimEnd('0').trimEnd('.');
+  tdTotalVentas.textContent = totalVentas.toFixed(2).toString().padStart(6, '0');
   filaTotal.appendChild(tdTotalVentas);
 
   tabla.appendChild(filaTotal);
 }
+
 
 function reiniciarVentas() {
   ventas = [];
