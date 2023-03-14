@@ -23,7 +23,8 @@
   }
   body {
     background: linear-gradient(to bottom right, #FFC0CB, #53d8e4);
-    animation: gradient 10s ease infinite;
+    animation: gradient 5s ease infinite;
+    background-size: 400% 400%;
   }
   
   @keyframes gradient {
@@ -38,6 +39,8 @@
     }
   }
   
+  
+
   input {
     padding: 5px;
     font-size: 16px;

@@ -87,4 +87,3 @@ function imprimirDatos() {
     let nuevaVentana = window.open("");
     nuevaVentana.document.write(`<pre>${contenido}</pre>`);
 }
-  
